@@ -61,6 +61,28 @@ namespace texts {
                 export const Username: string;
             }
         }
+
+        namespace Tanimlamalar {
+
+            namespace City {
+                export const CityId: string;
+                export const Name: string;
+            }
+
+            namespace Districts {
+                export const CityId: string;
+                export const CityName: string;
+                export const DistrictId: string;
+                export const Name: string;
+            }
+
+            namespace Hospitals {
+                export const DistrictId: string;
+                export const DistrictName: string;
+                export const HospitalId: string;
+                export const Name: string;
+            }
+        }
     }
 
     export declare namespace Forms {
@@ -155,6 +177,11 @@ const Texts: typeof texts = proxyTexts({}, '', {
             User: {},
             UserPermission: {},
             UserRole: {}
+        },
+        Tanimlamalar: {
+            City: {},
+            Districts: {},
+            Hospitals: {}
         }
     },
     Forms: {

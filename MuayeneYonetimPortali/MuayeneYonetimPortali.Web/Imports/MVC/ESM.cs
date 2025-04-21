@@ -2,6 +2,9 @@
 
 public static partial class ESM
 {
+    public const string CityPage = "~/esm/Modules/Tanimlamalar/City/CityPage.js";
+    public const string DistrictsPage = "~/esm/Modules/Tanimlamalar/Districts/DistrictsPage.js";
+    public const string HospitalsPage = "~/esm/Modules/Tanimlamalar/Hospitals/HospitalsPage.js";
     public const string LanguagePage = "~/esm/Modules/Administration/Language/LanguagePage.js";
     public const string LoginPage = "~/esm/Modules/Membership/Account/Login/LoginPage.js";
     public const string RolePage = "~/esm/Modules/Administration/Role/RolePage.js";
@@ -53,6 +56,24 @@ public static partial class ESM
                 {
                     public const string SignUpPage = "~/esm/Modules/Membership/Account/SignUp/SignUpPage.js";
                 }
+            }
+        }
+
+        public static partial class Tanimlamalar
+        {
+            public static partial class City
+            {
+                public const string CityPage = "~/esm/Modules/Tanimlamalar/City/CityPage.js";
+            }
+
+            public static partial class Districts
+            {
+                public const string DistrictsPage = "~/esm/Modules/Tanimlamalar/Districts/DistrictsPage.js";
+            }
+
+            public static partial class Hospitals
+            {
+                public const string HospitalsPage = "~/esm/Modules/Tanimlamalar/Hospitals/HospitalsPage.js";
             }
         }
     }
