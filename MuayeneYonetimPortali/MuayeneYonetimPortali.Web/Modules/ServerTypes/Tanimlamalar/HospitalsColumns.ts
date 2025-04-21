@@ -6,6 +6,7 @@ export interface HospitalsColumns {
     HospitalId: Column<HospitalsRow>;
     Name: Column<HospitalsRow>;
     DistrictName: Column<HospitalsRow>;
+    CityName: Column<HospitalsRow>;
 }
 
 export class HospitalsColumns extends ColumnsBase<HospitalsRow> {

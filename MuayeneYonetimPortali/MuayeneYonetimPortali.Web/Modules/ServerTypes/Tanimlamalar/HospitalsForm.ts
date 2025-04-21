@@ -2,6 +2,7 @@
 
 export interface HospitalsForm {
     Name: StringEditor;
+    CityId: ServiceLookupEditor;
     DistrictId: ServiceLookupEditor;
 }
 
@@ -20,6 +21,7 @@ export class HospitalsForm extends PrefixedContext {
 
             initFormType(HospitalsForm, [
                 'Name', w0,
+                'CityId', w1,
                 'DistrictId', w1
             ]);
         }

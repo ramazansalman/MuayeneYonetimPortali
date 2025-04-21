@@ -12,4 +12,5 @@ public class HospitalsColumns
     [EditLink]
     public string Name { get; set; }
     public string DistrictName { get; set; }
+    public string CityName{ get; set; }
 }

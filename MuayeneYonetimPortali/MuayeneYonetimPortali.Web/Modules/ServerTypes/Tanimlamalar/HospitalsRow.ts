@@ -5,6 +5,8 @@ export interface HospitalsRow {
     Name?: string;
     DistrictId?: number;
     DistrictName?: string;
+    CityId?: number;
+    CityName?: string;
 }
 
 export abstract class HospitalsRow {

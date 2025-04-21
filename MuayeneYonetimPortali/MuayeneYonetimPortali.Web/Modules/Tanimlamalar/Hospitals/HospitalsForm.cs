@@ -7,5 +7,7 @@ namespace MuayeneYonetimPortali.Tanimlamalar.Forms;
 public class HospitalsForm
 {
     public string Name { get; set; }
+    [OneWay]
+    public int CityId { get; set; }
     public int DistrictId { get; set; }
 }

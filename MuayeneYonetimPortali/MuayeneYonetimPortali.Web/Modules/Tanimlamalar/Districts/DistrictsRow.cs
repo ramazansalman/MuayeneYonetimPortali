@@ -10,6 +10,7 @@ namespace MuayeneYonetimPortali.Tanimlamalar;
 [ReadPermission("Tanimlamalar.Districts.General")]
 [ModifyPermission("Tanimlamalar.Districts.General")]
 [ServiceLookupPermission("Tanimlamalar.Districts.General")]
+[LookupScript]
 public sealed class DistrictsRow : Row<DistrictsRow.RowFields>, IIdRow, INameRow
 {
     const string jCity = nameof(jCity);
@@ -21,7 +22,7 @@ public sealed class DistrictsRow : Row<DistrictsRow.RowFields>, IIdRow, INameRow
     public string Name { get => fields.Name[this]; set => fields.Name[this] = value; }
 
     [DisplayName("City"), NotNull, ForeignKey(typeof(CityRow)), LeftJoin(jCity), TextualField(nameof(CityName))]
-    [ServiceLookupEditor(typeof(CityRow), Service = "Tanimlamalar/City/List")]
+    [ServiceLookupEditor(typeof(CityRow), Service = "Tanimlamalar/City/List"), LookupInclude]
     public int? CityId { get => fields.CityId[this]; set => fields.CityId[this] = value; }
 
     [DisplayName("City Name"), Origin(jCity, nameof(CityRow.Name))]

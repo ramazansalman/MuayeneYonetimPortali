@@ -13,5 +13,10 @@ public class DefaultDB_20250421_1117_Hospitals : AutoReversingMigration
             .WithColumn("Name").AsString(200).NotNullable()
             .WithColumn("DistrictId").AsInt32().NotNullable()
                 .ForeignKey("Districts", "DistrictId");
+
+        Alter.Table("Hospitals")
+        .AlterColumn("HospitalId").AsInt32().Nullable()
+            .ForeignKey("FK_Movie_GenreId", "Genre", "GenreId");
+
     }
 }

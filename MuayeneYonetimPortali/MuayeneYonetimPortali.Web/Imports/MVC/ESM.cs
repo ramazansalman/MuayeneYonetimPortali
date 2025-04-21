@@ -3,6 +3,7 @@
 public static partial class ESM
 {
     public const string CityPage = "~/esm/Modules/Tanimlamalar/City/CityPage.js";
+    public const string DepartmentsPage = "~/esm/Modules/Tanimlamalar/Departments/DepartmentsPage.js";
     public const string DistrictsPage = "~/esm/Modules/Tanimlamalar/Districts/DistrictsPage.js";
     public const string HospitalsPage = "~/esm/Modules/Tanimlamalar/Hospitals/HospitalsPage.js";
     public const string LanguagePage = "~/esm/Modules/Administration/Language/LanguagePage.js";
@@ -64,6 +65,11 @@ public static partial class ESM
             public static partial class City
             {
                 public const string CityPage = "~/esm/Modules/Tanimlamalar/City/CityPage.js";
+            }
+
+            public static partial class Departments
+            {
+                public const string DepartmentsPage = "~/esm/Modules/Tanimlamalar/Departments/DepartmentsPage.js";
             }
 
             public static partial class Districts
