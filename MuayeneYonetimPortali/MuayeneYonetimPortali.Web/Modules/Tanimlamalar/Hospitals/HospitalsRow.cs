@@ -14,6 +14,7 @@ public sealed class HospitalsRow : Row<HospitalsRow.RowFields>, IIdRow, INameRow
 {
     const string jDistrict = nameof(jDistrict);
     const string jCity = nameof(jCity);
+    const string jDepartment = nameof(jDepartment);
 
     [DisplayName("Hospital Id"), Identity, IdProperty]
     public int? HospitalId { get => fields.HospitalId[this]; set => fields.HospitalId[this] = value; }
@@ -34,6 +35,18 @@ public sealed class HospitalsRow : Row<HospitalsRow.RowFields>, IIdRow, INameRow
 
     [DisplayName("City Name"), Origin(jCity, nameof(CityRow.Name))]
     public string CityName { get => fields.CityName[this]; set => fields.CityName[this] = value; }
+    
+    [DisplayName("Departments"), LookupEditor(typeof(DepartmentsRow), Multiple = true), NotMapped]
+    [LinkingSetRelation(typeof(HospitalDepartmentsRow), nameof(HospitalDepartmentsRow.HospitalId), nameof(HospitalDepartmentsRow.DepartmentId))]
+    public List<int> DepartmentList { get => fields.DepartmentList[this]; set => fields.DepartmentList[this] = value; }
+
+    // [DisplayName("Departments"), ForeignKey(typeof(DepartmentsRow)), LeftJoin(jDepartment)]
+    // [LookupEditor(typeof(DepartmentsRow), InplaceAdd = true, DialogType ="Tanimlamalar.Departments")]
+    // public int? DepartmentId { get => fields.DepartmentId[this]; set => fields.DepartmentId[this] = value; }
+
+    // [DisplayName("Departments"), Expression($"{jDepartment}.Name")]
+    // public string DepartmentName { get => fields.DepartmentName[this]; set => fields.DepartmentName[this] = value; }
+
     public class RowFields : RowFieldsBase
     {
         public Int32Field HospitalId;
@@ -42,7 +55,10 @@ public sealed class HospitalsRow : Row<HospitalsRow.RowFields>, IIdRow, INameRow
         public StringField DistrictName;
         public Int32Field CityId;
         public StringField CityName;
-        //public ListField<int> DepartmentList;
+        // public Int32Field DepartmentId;
+        // public StringField DepartmentName;
+        public ListField<int> DepartmentList;
+
 
     }
 }

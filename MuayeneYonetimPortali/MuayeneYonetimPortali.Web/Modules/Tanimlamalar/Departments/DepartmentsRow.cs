@@ -10,6 +10,7 @@ namespace MuayeneYonetimPortali.Tanimlamalar;
 [ReadPermission("Tanimlamalar.Departments.General")]
 [ModifyPermission("Tanimlamalar.Departments.General")]
 [ServiceLookupPermission("Tanimlamalar.Departments.General")]
+[LookupScript]
 public sealed class DepartmentsRow : Row<DepartmentsRow.RowFields>, IIdRow, INameRow
 {
     [DisplayName("Department Id"), Identity, IdProperty]

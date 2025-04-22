@@ -81,9 +81,18 @@ namespace texts {
                 export const Name: string;
             }
 
+            namespace HospitalDepartments {
+                export const DepartmentId: string;
+                export const DepartmentName: string;
+                export const HospitalDepartmentId: string;
+                export const HospitalId: string;
+                export const HospitalName: string;
+            }
+
             namespace Hospitals {
                 export const CityId: string;
                 export const CityName: string;
+                export const DepartmentList: string;
                 export const DistrictId: string;
                 export const DistrictName: string;
                 export const HospitalId: string;
@@ -189,6 +198,7 @@ const Texts: typeof texts = proxyTexts({}, '', {
             City: {},
             Departments: {},
             Districts: {},
+            HospitalDepartments: {},
             Hospitals: {}
         }
     },

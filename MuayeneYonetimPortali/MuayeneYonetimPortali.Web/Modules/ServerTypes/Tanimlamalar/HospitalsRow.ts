@@ -7,6 +7,7 @@ export interface HospitalsRow {
     DistrictName?: string;
     CityId?: number;
     CityName?: string;
+    DepartmentList?: number[];
 }
 
 export abstract class HospitalsRow {
