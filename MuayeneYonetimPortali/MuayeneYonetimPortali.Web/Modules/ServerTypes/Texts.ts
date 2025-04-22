@@ -81,6 +81,20 @@ namespace texts {
                 export const Name: string;
             }
 
+            namespace Doctors {
+                export const BirthDate: string;
+                export const DepartmentId: string;
+                export const DepartmentName: string;
+                export const DoctorId: string;
+                export const Gender: string;
+                export const HospitalId: string;
+                export const HospitalName: string;
+                export const Name: string;
+                export const Surname: string;
+                export const UserId: string;
+                export const Username: string;
+            }
+
             namespace HospitalDepartments {
                 export const DepartmentId: string;
                 export const DepartmentName: string;
@@ -97,6 +111,16 @@ namespace texts {
                 export const DistrictName: string;
                 export const HospitalId: string;
                 export const Name: string;
+            }
+
+            namespace Patients {
+                export const BirthDate: string;
+                export const Gender: string;
+                export const Name: string;
+                export const PatientId: string;
+                export const Surname: string;
+                export const UserId: string;
+                export const Username: string;
             }
         }
     }
@@ -198,8 +222,10 @@ const Texts: typeof texts = proxyTexts({}, '', {
             City: {},
             Departments: {},
             Districts: {},
+            Doctors: {},
             HospitalDepartments: {},
-            Hospitals: {}
+            Hospitals: {},
+            Patients: {}
         }
     },
     Forms: {

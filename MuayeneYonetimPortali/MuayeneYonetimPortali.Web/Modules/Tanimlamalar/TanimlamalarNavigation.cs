@@ -5,3 +5,5 @@ using MyPages = MuayeneYonetimPortali.Tanimlamalar.Pages;
 [assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Districts", typeof(MyPages.DistrictsPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Hospitals", typeof(MyPages.HospitalsPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Departments", typeof(MyPages.DepartmentsPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Doctors", typeof(MyPages.DoctorsPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Patients", typeof(MyPages.PatientsPage), icon: null)]

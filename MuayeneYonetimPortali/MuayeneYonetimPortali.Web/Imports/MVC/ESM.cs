@@ -5,9 +5,11 @@ public static partial class ESM
     public const string CityPage = "~/esm/Modules/Tanimlamalar/City/CityPage.js";
     public const string DepartmentsPage = "~/esm/Modules/Tanimlamalar/Departments/DepartmentsPage.js";
     public const string DistrictsPage = "~/esm/Modules/Tanimlamalar/Districts/DistrictsPage.js";
+    public const string DoctorsPage = "~/esm/Modules/Tanimlamalar/Doctors/DoctorsPage.js";
     public const string HospitalsPage = "~/esm/Modules/Tanimlamalar/Hospitals/HospitalsPage.js";
     public const string LanguagePage = "~/esm/Modules/Administration/Language/LanguagePage.js";
     public const string LoginPage = "~/esm/Modules/Membership/Account/Login/LoginPage.js";
+    public const string PatientsPage = "~/esm/Modules/Tanimlamalar/Patients/PatientsPage.js";
     public const string RolePage = "~/esm/Modules/Administration/Role/RolePage.js";
     public const string ScriptInit = "~/esm/Modules/Common/ScriptInit.js";
     public const string SignUpPage = "~/esm/Modules/Membership/Account/SignUp/SignUpPage.js";
@@ -77,9 +79,19 @@ public static partial class ESM
                 public const string DistrictsPage = "~/esm/Modules/Tanimlamalar/Districts/DistrictsPage.js";
             }
 
+            public static partial class Doctors
+            {
+                public const string DoctorsPage = "~/esm/Modules/Tanimlamalar/Doctors/DoctorsPage.js";
+            }
+
             public static partial class Hospitals
             {
                 public const string HospitalsPage = "~/esm/Modules/Tanimlamalar/Hospitals/HospitalsPage.js";
+            }
+
+            public static partial class Patients
+            {
+                public const string PatientsPage = "~/esm/Modules/Tanimlamalar/Patients/PatientsPage.js";
             }
         }
     }
