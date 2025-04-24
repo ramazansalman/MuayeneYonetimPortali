@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+﻿using MuayeneYonetimPortali.Tanimlamalar;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
@@ -27,12 +28,12 @@ public sealed class AppointmentsRow : Row<AppointmentsRow.RowFields>, IIdRow
     public int? CityId { get => fields.CityId[this]; set => fields.CityId[this] = value; }
 
     [DisplayName("District"), NotNull, ForeignKey(typeof(Tanimlamalar.DistrictsRow)), LeftJoin(jDistrict)]
-    [TextualField(nameof(DistrictName)), LookupEditor(typeof(Tanimlamalar.DistrictsRow), Async = true)]
+    [TextualField(nameof(DistrictName)), LookupEditor(typeof(Tanimlamalar.DistrictsRow), Async = true, CascadeFrom =nameof(DistrictsRow.CityId))]
     public int? DistrictId { get => fields.DistrictId[this]; set => fields.DistrictId[this] = value; }
 
     [DisplayName("Hospital"), NotNull, ForeignKey(typeof(Tanimlamalar.HospitalsRow)), LeftJoin(jHospital)]
     [TextualField(nameof(HospitalName))]
-    [ServiceLookupEditor(typeof(Tanimlamalar.HospitalsRow), Service = "Tanimlamalar/Hospitals/List")]
+    [ServiceLookupEditor(typeof(Tanimlamalar.HospitalsRow), Service = "Tanimlamalar/Hospitals/List", CascadeFrom =nameof(HospitalsRow.DistrictId))]
     public int? HospitalId { get => fields.HospitalId[this]; set => fields.HospitalId[this] = value; }
 
     [DisplayName("Department"), ForeignKey(typeof(Tanimlamalar.DepartmentsRow)), LeftJoin(jDepartment)]
@@ -40,7 +41,7 @@ public sealed class AppointmentsRow : Row<AppointmentsRow.RowFields>, IIdRow
     public int? DepartmentId { get => fields.DepartmentId[this]; set => fields.DepartmentId[this] = value; }
 
     [DisplayName("Doctor"), NotNull, ForeignKey(typeof(Tanimlamalar.DoctorsRow)), LeftJoin(jDoctor), TextualField(nameof(DoctorName))]
-    [ServiceLookupEditor(typeof(Tanimlamalar.DoctorsRow), Service = "Tanimlamalar/Doctors/List")]
+    [ServiceLookupEditor(typeof(Tanimlamalar.DoctorsRow), Service = "Tanimlamalar/Doctors/List", CascadeFrom =nameof(DoctorsRow.DepartmentId))]
     public int? DoctorId { get => fields.DoctorId[this]; set => fields.DoctorId[this] = value; }
 
     [DisplayName("Patient"), NotNull, ForeignKey(typeof(Tanimlamalar.PatientsRow)), LeftJoin(jPatient), TextualField(nameof(PatientName))]

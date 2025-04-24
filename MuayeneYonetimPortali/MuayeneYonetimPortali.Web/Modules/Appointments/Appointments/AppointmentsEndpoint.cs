@@ -59,4 +59,29 @@ public class AppointmentsEndpoint : ServiceEndpoint
         return ExcelContentResult.Create(bytes, "AppointmentsList_" +
             DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".xlsx");
     }
+
+    [HttpPost, AuthorizeList(typeof(MyRow))]
+    public ListResponse<string> GetAvailableHours(IDbConnection connection, GetAvailableHoursRequest request)
+    {
+        var takenTimes = connection.Query<string>(
+            @"SELECT FORMAT(AppointmentDate, 'HH:mm') 
+            FROM Appointments 
+            WHERE DoctorId = @DoctorId AND 
+                    CAST(AppointmentDate AS DATE) = @Date",
+            new { request.DoctorId, request.Date.Date }).ToList();
+
+        var availableTimes = new List<string>();
+        var start = new TimeSpan(8, 0, 0);
+        var end = new TimeSpan(17, 0, 0);
+
+        for (var time = start; time < end; time += TimeSpan.FromMinutes(20))
+        {
+            var timeStr = time.ToString(@"hh\:mm");
+            if (!takenTimes.Contains(timeStr))
+                availableTimes.Add(timeStr);
+        }
+
+        return new ListResponse<string> { Entities = availableTimes };
+    }
+
 }
