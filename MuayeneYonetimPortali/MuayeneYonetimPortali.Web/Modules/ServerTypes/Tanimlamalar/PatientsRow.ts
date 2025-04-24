@@ -1,11 +1,12 @@
 ﻿import { fieldsProxy } from "@serenity-is/corelib";
+import { Gender } from "./Gender";
 
 export interface PatientsRow {
     PatientId?: number;
     UserId?: number;
     Name?: string;
     Surname?: string;
-    Gender?: number;
+    Gender?: Gender;
     BirthDate?: string;
     Username?: string;
 }

@@ -29,7 +29,7 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
     public string Surname { get => fields.Surname[this]; set => fields.Surname[this] = value; }
 
     [DisplayName("Gender"), NotNull]
-    public int? Gender { get => fields.Gender[this]; set => fields.Gender[this] = value; }
+    public Gender? Gender { get => fields.Gender[this]; set => fields.Gender[this] = value; }
 
     [DisplayName("Birth Date"), NotNull]
     public DateTime? BirthDate { get => fields.BirthDate[this]; set => fields.BirthDate[this] = value; }
@@ -43,7 +43,7 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
         public Int32Field UserId;
         public StringField Name;
         public StringField Surname;
-        public Int32Field Gender;
+        public EnumField<Gender> Gender;
         public DateTimeField BirthDate;
 
         public StringField Username;

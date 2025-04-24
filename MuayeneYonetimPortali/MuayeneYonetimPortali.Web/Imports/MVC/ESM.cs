@@ -2,6 +2,7 @@
 
 public static partial class ESM
 {
+    public const string AppointmentsPage = "~/esm/Modules/Appointments/Appointments/AppointmentsPage.js";
     public const string CityPage = "~/esm/Modules/Tanimlamalar/City/CityPage.js";
     public const string DepartmentsPage = "~/esm/Modules/Tanimlamalar/Departments/DepartmentsPage.js";
     public const string DistrictsPage = "~/esm/Modules/Tanimlamalar/Districts/DistrictsPage.js";
@@ -38,6 +39,14 @@ public static partial class ESM
             public static partial class User
             {
                 public const string UserPage = "~/esm/Modules/Administration/User/UserPage.js";
+            }
+        }
+
+        public static partial class Appointments
+        {
+            public static partial class Appointments_
+            {
+                public const string AppointmentsPage = "~/esm/Modules/Appointments/Appointments/AppointmentsPage.js";
             }
         }
 

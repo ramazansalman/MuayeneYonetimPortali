@@ -1,10 +1,11 @@
-﻿import { LookupEditor, StringEditor, IntegerEditor, DateEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { LookupEditor, StringEditor, EnumEditor, DateEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+import { Gender } from "./Gender";
 
 export interface PatientsForm {
     UserId: LookupEditor;
     Name: StringEditor;
     Surname: StringEditor;
-    Gender: IntegerEditor;
+    Gender: EnumEditor;
     BirthDate: DateEditor;
 }
 
@@ -20,7 +21,7 @@ export class PatientsForm extends PrefixedContext {
 
             var w0 = LookupEditor;
             var w1 = StringEditor;
-            var w2 = IntegerEditor;
+            var w2 = EnumEditor;
             var w3 = DateEditor;
 
             initFormType(PatientsForm, [
@@ -33,3 +34,5 @@ export class PatientsForm extends PrefixedContext {
         }
     }
 }
+
+[Gender]; // referenced types

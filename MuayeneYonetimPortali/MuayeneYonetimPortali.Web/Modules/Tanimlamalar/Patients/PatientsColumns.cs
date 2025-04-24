@@ -14,6 +14,6 @@ public class PatientsColumns
     [EditLink]
     public string Name { get; set; }
     public string Surname { get; set; }
-    public int Gender { get; set; }
+    public Gender Gender { get; set; }
     public DateTime BirthDate { get; set; }
 }

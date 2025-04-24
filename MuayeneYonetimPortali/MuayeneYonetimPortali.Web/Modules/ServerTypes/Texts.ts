@@ -62,6 +62,26 @@ namespace texts {
             }
         }
 
+        namespace Appointments {
+
+            namespace Appointments {
+                export const AppointmentDate: string;
+                export const AppointmentId: string;
+                export const CityId: string;
+                export const CityName: string;
+                export const DepartmentId: string;
+                export const DepartmentName: string;
+                export const DistrictId: string;
+                export const DistrictName: string;
+                export const DoctorId: string;
+                export const DoctorName: string;
+                export const HospitalId: string;
+                export const HospitalName: string;
+                export const PatientId: string;
+                export const PatientName: string;
+            }
+        }
+
         namespace Tanimlamalar {
 
             namespace City {
@@ -217,6 +237,9 @@ const Texts: typeof texts = proxyTexts({}, '', {
             User: {},
             UserPermission: {},
             UserRole: {}
+        },
+        Appointments: {
+            Appointments: {}
         },
         Tanimlamalar: {
             City: {},
