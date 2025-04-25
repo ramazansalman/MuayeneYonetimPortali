@@ -34,6 +34,15 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
     [DisplayName("Birth Date"), NotNull]
     public DateTime? BirthDate { get => fields.BirthDate[this]; set => fields.BirthDate[this] = value; }
 
+    [DisplayName("Phone"), Size(20), NotNull]
+    public string Phone { get => fields.Phone[this]; set => fields.Phone[this] = value; }
+
+    [DisplayName("Email"), Size(100)]
+    public string Email { get => fields.Email[this]; set => fields.Email[this] = value; }
+
+    [DisplayName("Tckn"), Column("TCKN"), Size(11), NotNull]
+    public string Tckn { get => fields.Tckn[this]; set => fields.Tckn[this] = value; }
+
     [DisplayName("User Username"), Origin(jUser, nameof(Administration.UserRow.Username))]
     public string Username { get => fields.Username[this]; set => fields.Username[this] = value; }
 
@@ -45,6 +54,9 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
         public StringField Surname;
         public EnumField<Gender> Gender;
         public DateTimeField BirthDate;
+        public StringField Phone;
+        public StringField Email;
+        public StringField Tckn;
 
         public StringField Username;
     }

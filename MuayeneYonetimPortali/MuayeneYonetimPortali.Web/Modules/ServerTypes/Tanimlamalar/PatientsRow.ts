@@ -8,6 +8,9 @@ export interface PatientsRow {
     Surname?: string;
     Gender?: Gender;
     BirthDate?: string;
+    Phone?: string;
+    Email?: string;
+    Tckn?: string;
     Username?: string;
 }
 

@@ -10,6 +10,9 @@ export interface PatientsColumns {
     Surname: Column<PatientsRow>;
     Gender: Column<PatientsRow>;
     BirthDate: Column<PatientsRow>;
+    Phone: Column<PatientsRow>;
+    Email: Column<PatientsRow>;
+    Tckn: Column<PatientsRow>;
 }
 
 export class PatientsColumns extends ColumnsBase<PatientsRow> {

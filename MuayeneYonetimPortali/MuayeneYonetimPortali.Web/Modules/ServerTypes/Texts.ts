@@ -135,10 +135,13 @@ namespace texts {
 
             namespace Patients {
                 export const BirthDate: string;
+                export const Email: string;
                 export const Gender: string;
                 export const Name: string;
                 export const PatientId: string;
+                export const Phone: string;
                 export const Surname: string;
+                export const Tckn: string;
                 export const UserId: string;
                 export const Username: string;
             }

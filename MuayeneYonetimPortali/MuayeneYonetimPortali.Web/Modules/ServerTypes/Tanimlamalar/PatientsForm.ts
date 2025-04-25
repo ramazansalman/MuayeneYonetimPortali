@@ -7,6 +7,9 @@ export interface PatientsForm {
     Surname: StringEditor;
     Gender: EnumEditor;
     BirthDate: DateEditor;
+    Phone: StringEditor;
+    Email: StringEditor;
+    Tckn: StringEditor;
 }
 
 export class PatientsForm extends PrefixedContext {
@@ -29,7 +32,10 @@ export class PatientsForm extends PrefixedContext {
                 'Name', w1,
                 'Surname', w1,
                 'Gender', w2,
-                'BirthDate', w3
+                'BirthDate', w3,
+                'Phone', w1,
+                'Email', w1,
+                'Tckn', w1
             ]);
         }
     }

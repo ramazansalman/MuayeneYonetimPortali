@@ -16,4 +16,7 @@ public class PatientsColumns
     public string Surname { get; set; }
     public Gender Gender { get; set; }
     public DateTime BirthDate { get; set; }
+    public string Phone { get; set; }
+    public string Email { get; set; }
+    public string Tckn { get; set; }
 }
