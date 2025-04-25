@@ -17,5 +17,6 @@ public class AppointmentsForm
 
     [Tab("Muayene Tarihi")]
     [Category("Tarih Seç")]
+    [DateTimeEditor(IntervalMinutes =20), HalfWidth]
     public DateTime AppointmentDate { get; set; }
 }

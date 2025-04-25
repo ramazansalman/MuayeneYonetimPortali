@@ -11,6 +11,11 @@ export class AppointmentsDialog extends EntityDialog<AppointmentsRow, any> {
 
     protected updateInterface(): void {
         super.updateInterface();
+        setTimeout(() => {
+            $('.s-DateTimeEditor.time').hide();  // saat dropdownunu gizle
+            $('.inplace-now').hide();
+        }, 200);
+        
 
         if (!$('#hours-result').length) {
             $('<div id="hours-result" class="mt-2"></div>')
@@ -46,16 +51,21 @@ export class AppointmentsDialog extends EntityDialog<AppointmentsRow, any> {
                         $('#hours-result button').removeClass('btn-success').addClass('btn-outline-primary');
                         saatBtn.removeClass('btn-outline-primary').addClass('btn-success');
                     
-                        const fullDateTime = new Date(`${date}T${saat}`);
-                        const fullString = `${date} ${saat}`;
-                    
-                        this.form.AppointmentDate.value = fullString;
-                        this.form.AppointmentDate.valueAsDate = fullDateTime;
+                        const [hour, minute] = saat.split(':').map(Number);
+                        const selectedDate = new Date(this.form.AppointmentDate.value);
                         
-                        console.log(fullDateTime);
-                    
+                        selectedDate.setHours(hour);
+                        selectedDate.setMinutes(minute);
+                        selectedDate.setSeconds(0);
+                        selectedDate.setMilliseconds(0);
+                        
+                        this.form.AppointmentDate.value = selectedDate.toISOString();
+                        this.form.AppointmentDate.valueAsDate = selectedDate;
+                        
+                        console.log(selectedDate.toISOString());
+                        
                         $('#selected-hour').remove();
-                        $('<div id="selected-hour" class="mt-2 text-info"><strong>\uD83D\uDD52 Seçilen randevu saati:</strong> ' + fullDateTime.toLocaleString('tr-TR') + '</div>')
+                        $('<div id="selected-hour" class="mt-2 text-info"><strong>\uD83D\uDD52 Seçilen randevu saati:</strong> ' + selectedDate.toLocaleString('tr-TR') + '</div>')
                             .insertAfter(saatDiv);
                     });
                     

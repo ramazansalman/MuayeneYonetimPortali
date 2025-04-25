@@ -72,7 +72,7 @@ public class AppointmentsEndpoint : ServiceEndpoint
 
         var availableTimes = new List<string>();
         var start = new TimeSpan(8, 0, 0);
-        var end = new TimeSpan(17, 0, 0);
+        var end = new TimeSpan(16, 0, 0);
 
         for (var time = start; time < end; time += TimeSpan.FromMinutes(20))
         {
