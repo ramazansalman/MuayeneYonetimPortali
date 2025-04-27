@@ -82,6 +82,52 @@ namespace texts {
             }
         }
 
+        namespace Examinations {
+
+            namespace ExaminationDiagnoses {
+                export const DiagnosisCode: string;
+                export const DiagnosisId: string;
+                export const ExaminationComplaint: string;
+                export const ExaminationId: string;
+            }
+
+            namespace Examinations {
+                export const AppointmentId: string;
+                export const Complaint: string;
+                export const DoctorId: string;
+                export const DoctorName: string;
+                export const DoctorNote: string;
+                export const ExaminationDate: string;
+                export const ExaminationId: string;
+                export const PatientId: string;
+                export const PatientName: string;
+            }
+        }
+
+        namespace Prescriptions {
+
+            namespace PrescriptionDrugs {
+                export const DrugId: string;
+                export const DrugName: string;
+                export const PrescriptionDrugId: string;
+                export const PrescriptionId: string;
+                export const PrescriptionNote: string;
+                export const Usage: string;
+            }
+
+            namespace Prescriptions {
+                export const DoctorId: string;
+                export const DoctorName: string;
+                export const ExaminationComplaint: string;
+                export const ExaminationId: string;
+                export const PatientId: string;
+                export const PatientName: string;
+                export const PrescriptionDate: string;
+                export const PrescriptionId: string;
+                export const PrescriptionNote: string;
+            }
+        }
+
         namespace Tanimlamalar {
 
             namespace City {
@@ -91,6 +137,13 @@ namespace texts {
 
             namespace Departments {
                 export const DepartmentId: string;
+                export const Name: string;
+            }
+
+            namespace Diagnoses {
+                export const Code: string;
+                export const DiagnosisId: string;
+                export const IsActive: string;
                 export const Name: string;
             }
 
@@ -113,6 +166,16 @@ namespace texts {
                 export const Surname: string;
                 export const UserId: string;
                 export const Username: string;
+            }
+
+            namespace Drugs {
+                export const AtcCode: string;
+                export const AtcName: string;
+                export const Barcode: string;
+                export const CompanyName: string;
+                export const DrugId: string;
+                export const IsActive: string;
+                export const Name: string;
             }
 
             namespace HospitalDepartments {
@@ -244,11 +307,21 @@ const Texts: typeof texts = proxyTexts({}, '', {
         Appointments: {
             Appointments: {}
         },
+        Examinations: {
+            ExaminationDiagnoses: {},
+            Examinations: {}
+        },
+        Prescriptions: {
+            PrescriptionDrugs: {},
+            Prescriptions: {}
+        },
         Tanimlamalar: {
             City: {},
             Departments: {},
+            Diagnoses: {},
             Districts: {},
             Doctors: {},
+            Drugs: {},
             HospitalDepartments: {},
             Hospitals: {},
             Patients: {}

@@ -8,3 +8,6 @@ using MyPages = MuayeneYonetimPortali.Tanimlamalar.Pages;
 [assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Departments", typeof(MyPages.DepartmentsPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Doctors", typeof(MyPages.DoctorsPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Patients", typeof(MyPages.PatientsPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Diagnoses", typeof(MyPages.DiagnosesPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Drugs", typeof(MyPages.DrugsPage), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Tanimlamalar/Drugs", typeof(MyPages.DrugsPage), icon: null)]
