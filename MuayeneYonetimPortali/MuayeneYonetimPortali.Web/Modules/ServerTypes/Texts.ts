@@ -118,6 +118,7 @@ namespace texts {
             namespace Prescriptions {
                 export const DoctorId: string;
                 export const DoctorName: string;
+                export const DrugList: string;
                 export const ExaminationComplaint: string;
                 export const ExaminationId: string;
                 export const PatientId: string;

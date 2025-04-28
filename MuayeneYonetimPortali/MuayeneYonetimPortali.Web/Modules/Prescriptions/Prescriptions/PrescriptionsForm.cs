@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+﻿using MuayeneYonetimPortali.Tanimlamalar;
+using Serenity.ComponentModel;
 using System;
 
 namespace MuayeneYonetimPortali.Prescriptions.Forms;
@@ -12,4 +13,8 @@ public class PrescriptionsForm
     public int PatientId { get; set; }
     public string PrescriptionNote { get; set; }
     public DateTime PrescriptionDate { get; set; }
+    
+    [LookupEditor(typeof(DrugsRow), Multiple = true)]
+    public List<int> DrugList { get; set; }
+
 }

@@ -1,4 +1,4 @@
-﻿import { IntegerEditor, ServiceLookupEditor, StringEditor, DateEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { IntegerEditor, ServiceLookupEditor, StringEditor, DateEditor, LookupEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface PrescriptionsForm {
     ExaminationId: IntegerEditor;
@@ -6,6 +6,7 @@ export interface PrescriptionsForm {
     PatientId: ServiceLookupEditor;
     PrescriptionNote: StringEditor;
     PrescriptionDate: DateEditor;
+    DrugList: LookupEditor;
 }
 
 export class PrescriptionsForm extends PrefixedContext {
@@ -22,13 +23,15 @@ export class PrescriptionsForm extends PrefixedContext {
             var w1 = ServiceLookupEditor;
             var w2 = StringEditor;
             var w3 = DateEditor;
+            var w4 = LookupEditor;
 
             initFormType(PrescriptionsForm, [
                 'ExaminationId', w0,
                 'DoctorId', w1,
                 'PatientId', w1,
                 'PrescriptionNote', w2,
-                'PrescriptionDate', w3
+                'PrescriptionDate', w3,
+                'DrugList', w4
             ]);
         }
     }

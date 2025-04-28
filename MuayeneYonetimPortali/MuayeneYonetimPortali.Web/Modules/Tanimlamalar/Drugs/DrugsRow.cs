@@ -10,6 +10,7 @@ namespace MuayeneYonetimPortali.Tanimlamalar;
 [ReadPermission("Tanimlamalar.Drugs.General")]
 [ModifyPermission("Tanimlamalar.Drugs.General")]
 [ServiceLookupPermission("Tanimlamalar.Drugs.General")]
+[LookupScript]
 public sealed class DrugsRow : Row<DrugsRow.RowFields>, IIdRow, INameRow
 {
     [DisplayName("Drug Id"), Identity, IdProperty]

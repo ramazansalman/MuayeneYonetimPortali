@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+﻿using MuayeneYonetimPortali.Tanimlamalar;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
@@ -11,11 +12,13 @@ namespace MuayeneYonetimPortali.Prescriptions;
 [ReadPermission("Prescriptions.Prescriptions.General")]
 [ModifyPermission("Prescriptions.Prescriptions.General")]
 [ServiceLookupPermission("Prescriptions.Prescriptions.General")]
+[LookupScript]
 public sealed class PrescriptionsRow : Row<PrescriptionsRow.RowFields>, IIdRow, INameRow
 {
     const string jExamination = nameof(jExamination);
     const string jDoctor = nameof(jDoctor);
     const string jPatient = nameof(jPatient);
+    const string jDrug = nameof(jDrug);
 
     [DisplayName("Prescription Id"), Identity, IdProperty]
     public int? PrescriptionId { get => fields.PrescriptionId[this]; set => fields.PrescriptionId[this] = value; }
@@ -47,6 +50,9 @@ public sealed class PrescriptionsRow : Row<PrescriptionsRow.RowFields>, IIdRow, 
     [DisplayName("Patient Name"), Origin(jPatient, nameof(Tanimlamalar.PatientsRow.Name))]
     public string PatientName { get => fields.PatientName[this]; set => fields.PatientName[this] = value; }
 
+    [DisplayName("İlaçlar"), NotMapped, LookupEditor(typeof(DrugsRow), Multiple = true)]
+    [LinkingSetRelation(typeof(PrescriptionDrugsRow), "PrescriptionId", "DrugId")]
+    public List<int> DrugList { get => fields.DrugList[this]; set => fields.DrugList[this] = value;}
     public class RowFields : RowFieldsBase
     {
         public Int32Field PrescriptionId;
@@ -59,5 +65,6 @@ public sealed class PrescriptionsRow : Row<PrescriptionsRow.RowFields>, IIdRow, 
         public StringField ExaminationComplaint;
         public StringField DoctorName;
         public StringField PatientName;
+        public ListField<int> DrugList;
     }
 }
