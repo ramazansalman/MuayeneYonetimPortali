@@ -1,10 +1,10 @@
-﻿import { StringEditor, ServiceLookupEditor, LookupEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
+﻿import { ServiceLookupEditor, LookupEditor, StringEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 
 export interface HospitalsForm {
-    Name: StringEditor;
     CityId: ServiceLookupEditor;
     DistrictId: ServiceLookupEditor;
     DepartmentList: LookupEditor;
+    Name: StringEditor;
 }
 
 export class HospitalsForm extends PrefixedContext {
@@ -17,15 +17,15 @@ export class HospitalsForm extends PrefixedContext {
         if (!HospitalsForm.init)  {
             HospitalsForm.init = true;
 
-            var w0 = StringEditor;
-            var w1 = ServiceLookupEditor;
-            var w2 = LookupEditor;
+            var w0 = ServiceLookupEditor;
+            var w1 = LookupEditor;
+            var w2 = StringEditor;
 
             initFormType(HospitalsForm, [
-                'Name', w0,
-                'CityId', w1,
-                'DistrictId', w1,
-                'DepartmentList', w2
+                'CityId', w0,
+                'DistrictId', w0,
+                'DepartmentList', w1,
+                'Name', w2
             ]);
         }
     }

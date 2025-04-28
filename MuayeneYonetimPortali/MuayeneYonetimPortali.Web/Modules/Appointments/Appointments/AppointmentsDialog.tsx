@@ -1,5 +1,7 @@
-﻿import { Decorators, EntityDialog} from '@serenity-is/corelib';
+﻿import { Decorators, EntityDialog } from '@serenity-is/corelib';
 import { AppointmentsForm, AppointmentsRow, AppointmentsService } from '../../ServerTypes/Appointments';
+import { ExaminationsDialog } from '../../Examinations/Examinations/ExaminationsDialog';
+
 declare var $: any;
 
 @Decorators.registerClass('MuayeneYonetimPortali.Appointments.AppointmentsDialog')
@@ -8,6 +10,20 @@ export class AppointmentsDialog extends EntityDialog<AppointmentsRow, any> {
     protected getRowDefinition() { return AppointmentsRow; }
     protected getService() { return AppointmentsService.baseUrl; }
     protected form = new AppointmentsForm(this.idPrefix);
+
+    private openExaminationDialog() {
+        if (!this.isEditMode())
+            return;
+
+        const appointment = this.entity!;
+        const examinationDialog = new ExaminationsDialog();
+        examinationDialog.loadEntityAndOpenDialog({
+            AppointmentId: appointment.AppointmentId,
+            DoctorId: appointment.DoctorId,
+            PatientId: appointment.PatientId,
+            ExaminationDate: appointment.AppointmentDate
+        });
+    }
 
     protected updateInterface(): void {
         super.updateInterface();
@@ -30,6 +46,17 @@ export class AppointmentsDialog extends EntityDialog<AppointmentsRow, any> {
 
         if (!this.isNew() && this.form.AppointmentDate.value) {
             this.loadAvailableHours();
+        }
+
+        if (!this.isNew() && !$('#muayene-olustur-button').length) {
+            $('<div class="text-center mt-4">' +
+                '<button id="muayene-olustur-button" class="btn btn-success" type="button">' +
+                'Muayene Oluştur' +
+                '</button>' +
+              '</div>')
+              .appendTo('.s-Form');
+
+            $('#muayene-olustur-button').on('click', () => this.openExaminationDialog());
         }
     }
 

@@ -24,13 +24,13 @@ public sealed class DrugsRow : Row<DrugsRow.RowFields>, IIdRow, INameRow
     [DisplayName("Barcode"), Size(50)]
     public string Barcode { get => fields.Barcode[this]; set => fields.Barcode[this] = value; }
 
-    [DisplayName("Company Name"), Size(200)]
+    [DisplayName("Company Name"), Size(200), QuickSearch]
     public string CompanyName { get => fields.CompanyName[this]; set => fields.CompanyName[this] = value; }
 
     [DisplayName("Atc Code"), Size(50)]
     public string AtcCode { get => fields.AtcCode[this]; set => fields.AtcCode[this] = value; }
 
-    [DisplayName("Atc Name"), Size(200)]
+    [DisplayName("Atc Name"), Size(200), QuickSearch]
     public string AtcName { get => fields.AtcName[this]; set => fields.AtcName[this] = value; }
 
     public class RowFields : RowFieldsBase

@@ -7,7 +7,7 @@ namespace MuayeneYonetimPortali.Appointments.Forms;
 [BasedOnRow(typeof(AppointmentsRow), CheckNames = true)]
 public class AppointmentsForm
 {
-    [Tab("Muayene Yeri")]
+    [Tab("Randevu Yeri")]
     public int CityId { get; set; }
     public int DistrictId { get; set; }
     public int HospitalId { get; set; }
@@ -15,7 +15,7 @@ public class AppointmentsForm
     public int DoctorId { get; set; }
     public int PatientId { get; set; }
 
-    [Tab("Muayene Tarihi")]
+    [Tab("Randevu Tarihi")]
     [Category("Tarih Seç")]
     [DateTimeEditor(IntervalMinutes =20), HalfWidth]
     public DateTime AppointmentDate { get; set; }

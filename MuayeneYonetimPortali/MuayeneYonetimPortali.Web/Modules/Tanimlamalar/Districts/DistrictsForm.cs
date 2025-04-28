@@ -6,6 +6,6 @@ namespace MuayeneYonetimPortali.Tanimlamalar.Forms;
 [BasedOnRow(typeof(DistrictsRow), CheckNames = true)]
 public class DistrictsForm
 {
-    public string Name { get; set; }
     public int CityId { get; set; }
+    public string Name { get; set; }
 }

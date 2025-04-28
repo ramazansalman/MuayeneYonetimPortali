@@ -6,10 +6,10 @@ namespace MuayeneYonetimPortali.Tanimlamalar.Forms;
 [BasedOnRow(typeof(HospitalsRow), CheckNames = true)]
 public class HospitalsForm
 {
-    public string Name { get; set; }
     [OneWay]
     public int CityId { get; set; }
     public int DistrictId { get; set; }
     // public int DepartmentId { get; set; }
     public List<int> DepartmentList { get; set; }
+    public string Name { get; set; }
 }

@@ -11,11 +11,18 @@ public class AppointmentsColumns
     [EditLink, DisplayName("Db.Shared.RecordId")]
     public int AppointmentId { get; set; }
     [DateTimeFormatter(DisplayFormat = "dd/MM/yyyy HH:mm"), Width(120)]
+    [EditLink]
     public DateTime AppointmentDate { get; set; }
+    [EditLink]
     public string CityName { get; set; }
+    [EditLink]
     public string DistrictName { get; set; }
-    public string HospitalName { get; set; }    
+    [EditLink]
+    public string HospitalName { get; set; }
+    [EditLink]    
     public string DepartmentName { get; set; }
+    [EditLink]
     public string DoctorName { get; set; }
+    [EditLink]
     public string PatientName { get; set; }
 }
