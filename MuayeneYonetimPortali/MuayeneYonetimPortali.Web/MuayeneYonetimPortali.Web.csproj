@@ -21,6 +21,7 @@
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.7.1" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers"/>
     <PackageReference Include="FastReport.OpenSource" Version="2025.2.0"/>
     <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2025.2.0"/>
+    <PackageReference Include="FastReport.OpenSource.Data.MsSql" Version="2021.4.0"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serenity.Assets" Version="8.8.1"/>

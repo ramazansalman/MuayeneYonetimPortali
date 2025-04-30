@@ -71,21 +71,19 @@ public class PrescriptionsEndpoint : ServiceEndpoint
     }
 
     [HttpPost]
-    public FileContentResult Makbuz(IDbConnection connection, RetrieveRequest request, 
-    [FromServices] PrescriptionsRetrieveHandler handler)
+    public FileContentResult Makbuz(IDbConnection connection, RetrieveRequest request,
+        [FromServices] PrescriptionsRetrieveHandler handler)
     {
         var report = new Report();
         var fileName = Path.Combine(_env.ContentRootPath, "wwwroot", "Report", "denemerecete.frx");
 
         report.Load(fileName);
 
-        //var user = (Authorization.UserDefinition as UserDefinition);
-
-        var data = new DataSet("Data");
-        data.Tables.Add(GetData(connection, request, handler));
-        //report.RegisterData(data);
-        report.RegisterData(data, "Prescriptions", true);
+        var data = GetData(connection, request, handler);
+        report.RegisterData(data, "Data", true);
         report.GetDataSource("Prescriptions").Enabled = true;
+        report.GetDataSource("Drugs").Enabled = true;
+
         report.Prepare();
 
         using MemoryStream ms = new();
@@ -94,19 +92,36 @@ public class PrescriptionsEndpoint : ServiceEndpoint
         return File(ms.ToArray(), "application/pdf");
     }
 
-    private DataTable GetData(IDbConnection connection, RetrieveRequest request, IPrescriptionsRetrieveHandler handler)
+    private DataSet GetData(IDbConnection connection, RetrieveRequest request, IPrescriptionsRetrieveHandler handler)
     {
         var row = Retrieve(connection, request, handler).Entity;
 
-        var dt = new DataTable("Prescriptions");
-        //dt.Columns.Add("PatientId", typeof(string));
-        dt.Columns.Add("PrescriptionDate", typeof(DateTime));
-        dt.Columns.Add("PrescriptionNote", typeof(string));
-        dt.Columns.Add("PatientId", typeof(int));
-        dt.Columns.Add("PrescriptionId", typeof(int));
+        var prescriptionTable = new DataTable("Prescriptions");
+        prescriptionTable.Columns.Add("PrescriptionDate", typeof(DateTime));
+        prescriptionTable.Columns.Add("PrescriptionNote", typeof(string));
+        prescriptionTable.Columns.Add("PatientId", typeof(int));
+        prescriptionTable.Columns.Add("PrescriptionId", typeof(int));
 
+        prescriptionTable.Rows.Add(row.PrescriptionDate, row.PrescriptionNote, row.PatientId, row.PrescriptionId);
 
-        dt.Rows.Add(row.PrescriptionDate, row.PrescriptionNote, row.PatientId, row.PrescriptionId);
-        return dt;
+        var drugTable = new DataTable("Drugs");
+        drugTable.Columns.Add("DrugName", typeof(string));
+
+        var prescriptionDrugs = connection.Query<PrescriptionDrugsRow>(
+            "SELECT * FROM PrescriptionDrugs WHERE PrescriptionId = @PrescriptionId",
+            new { PrescriptionId = row.PrescriptionId });
+
+        foreach (var item in prescriptionDrugs)
+        {
+            var drug = connection.TryById<DrugsRow>(item.DrugId);
+            if (drug != null)
+                drugTable.Rows.Add(drug.Name);
+        }
+
+        var ds = new DataSet("Data");
+        ds.Tables.Add(prescriptionTable);
+        ds.Tables.Add(drugTable);
+
+        return ds;
     }
 }
