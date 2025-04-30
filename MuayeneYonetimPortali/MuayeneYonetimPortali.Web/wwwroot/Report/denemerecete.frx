@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/29/2025 14:47:06" ReportInfo.Modified="04/30/2025 09:29:14" ReportInfo.CreatorVersion="2020.3.7.0">
+  <Dictionary/>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text10" Left="311.85" Top="9.45" Width="94.5" Height="18.9" Text="Reçete" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35">
+      <TextObject Name="Text2" Left="56.7" Width="94.5" Height="18.9" Text="PrescriptionDate" Font="Arial, 10pt"/>
+      <TextObject Name="Text4" Left="151.2" Width="94.5" Height="18.9" Text="PrescriptionNote" Font="Arial, 10pt"/>
+      <TextObject Name="Text8" Left="245.7" Width="94.5" Height="18.9" Text="PatientId" Font="Arial, 10pt"/>
+      <TextObject Name="Text5" Left="340.2" Width="94.5" Height="18.9" Text="PrescriptionId" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="56.7" Top="9.45" Width="94.5" Height="18.9" Text="[Prescriptions.PrescriptionDate]" Format="Date" Format.Format="d" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="151.2" Top="9.45" Width="94.5" Height="18.9" Text="[Prescriptions.PrescriptionNote]" Font="Arial, 10pt"/>
+      <TextObject Name="Text7" Left="245.7" Top="9.45" Width="94.5" Height="18.9" Text="[Prescriptions.PatientId]" Font="Arial, 10pt"/>
+      <TextObject Name="Text9" Left="340.2" Top="9.45" Width="94.5" Height="18.9" Text="[Prescriptions.PrescriptionId]" Font="Arial, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="115.95" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>
