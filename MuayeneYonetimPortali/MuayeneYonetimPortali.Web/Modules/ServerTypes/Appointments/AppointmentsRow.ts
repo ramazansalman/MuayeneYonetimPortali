@@ -14,7 +14,9 @@ export interface AppointmentsRow {
     HospitalName?: string;
     DepartmentName?: string;
     DoctorName?: string;
+    DoctorFullName?: string;
     PatientName?: string;
+    PatientFullName?: string;
 }
 
 export abstract class AppointmentsRow {

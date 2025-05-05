@@ -73,10 +73,12 @@ namespace texts {
                 export const DepartmentName: string;
                 export const DistrictId: string;
                 export const DistrictName: string;
+                export const DoctorFullName: string;
                 export const DoctorId: string;
                 export const DoctorName: string;
                 export const HospitalId: string;
                 export const HospitalName: string;
+                export const PatientFullName: string;
                 export const PatientId: string;
                 export const PatientName: string;
             }

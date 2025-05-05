@@ -9,8 +9,8 @@ export interface AppointmentsColumns {
     DistrictName: Column<AppointmentsRow>;
     HospitalName: Column<AppointmentsRow>;
     DepartmentName: Column<AppointmentsRow>;
-    DoctorName: Column<AppointmentsRow>;
-    PatientName: Column<AppointmentsRow>;
+    DoctorFullName: Column<AppointmentsRow>;
+    PatientFullName: Column<AppointmentsRow>;
 }
 
 export class AppointmentsColumns extends ColumnsBase<AppointmentsRow> {

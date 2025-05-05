@@ -24,6 +24,13 @@ export class AppointmentsDialog extends EntityDialog<AppointmentsRow, any> {
             ExaminationDate: appointment.AppointmentDate
         });
     }
+    override /**
+     *
+     */
+    // constructor() {
+    //     super();
+    //     this.form.PatientId.getGridField().hide();
+    // }
 
     protected updateInterface(): void {
         super.updateInterface();
@@ -57,6 +64,13 @@ export class AppointmentsDialog extends EntityDialog<AppointmentsRow, any> {
               .appendTo('.s-Form');
 
             $('#muayene-olustur-button').on('click', () => this.openExaminationDialog());
+        }
+        //patient adını eğer yeni kayıttaysak gizliyorum. edit modundaysak gelmeye devam ediyor.
+        if(this.isNew()) {
+            this.form.PatientId.getGridField().hide();
+        }
+        else{
+            this.form.PatientId.readOnly = true;
         }
     }
 

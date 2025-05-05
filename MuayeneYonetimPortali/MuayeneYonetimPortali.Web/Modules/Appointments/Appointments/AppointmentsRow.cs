@@ -66,8 +66,14 @@ public sealed class AppointmentsRow : Row<AppointmentsRow.RowFields>, IIdRow
     [DisplayName("Doctor Name"), Origin(jDoctor, nameof(Tanimlamalar.DoctorsRow.Name))]
     public string DoctorName { get => fields.DoctorName[this]; set => fields.DoctorName[this] = value; }
 
+    [DisplayName("Doctor Name"), Expression(jDoctor + ".[Name] + ' ' + " + jDoctor + ".[Surname]")]
+    public string DoctorFullName { get => fields.DoctorFullName[this]; set => fields.DoctorFullName[this] = value; }
+
     [DisplayName("Patient Name"), Origin(jPatient, nameof(Tanimlamalar.PatientsRow.Name))]
     public string PatientName { get => fields.PatientName[this]; set => fields.PatientName[this] = value; }
+
+    [DisplayName("Patient Name"), Expression(jPatient + ".[Name] + ' ' + " + jPatient + ".[Surname]")]
+    public string PatientFullName { get => fields.PatientFullName[this]; set => fields.PatientFullName[this] = value; }
 
     public class RowFields : RowFieldsBase
     {
@@ -85,6 +91,8 @@ public sealed class AppointmentsRow : Row<AppointmentsRow.RowFields>, IIdRow
         public StringField HospitalName;
         public StringField DepartmentName;
         public StringField DoctorName;
+        public StringField DoctorFullName;
         public StringField PatientName;
+        public StringField PatientFullName;
     }
 }
