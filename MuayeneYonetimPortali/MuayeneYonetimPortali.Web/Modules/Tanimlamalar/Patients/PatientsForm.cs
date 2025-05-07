@@ -15,4 +15,6 @@ public class PatientsForm
     public string Phone { get; set; }
     public string Email { get; set; }
     public string Tckn { get; set; }
+    public List<object> NoteList { get; set; }
+
 }

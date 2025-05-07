@@ -66,10 +66,8 @@ export class AppointmentsDialog extends EntityDialog<AppointmentsRow, any> {
             $('#muayene-olustur-button').on('click', () => this.openExaminationDialog());
         }
         //patient adını eğer yeni kayıttaysak gizliyorum. edit modundaysak gelmeye devam ediyor.
-        if(this.isNew()) {
-            this.form.PatientId.getGridField().hide();
-        }
-        else{
+        if((this.isNew() && this.entity.PatientId != null) || this.isEditMode()) {
+            //this.form.PatientId.getGridField().hide();
             this.form.PatientId.readOnly = true;
         }
     }

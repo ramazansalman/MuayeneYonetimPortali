@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+﻿using MuayeneYonetimPortali.Note;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
@@ -46,6 +47,9 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
     [DisplayName("User Username"), Origin(jUser, nameof(Administration.UserRow.Username))]
     public string Username { get => fields.Username[this]; set => fields.Username[this] = value; }
 
+    [NotesEditor, NotMapped]
+    public List<NoteRow> NoteList { get => fields.NoteList[this]; set => fields.NoteList[this] = value; }
+
     public class RowFields : RowFieldsBase
     {
         public Int32Field PatientId;
@@ -59,5 +63,7 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
         public StringField Tckn;
 
         public StringField Username;
+        public RowListField<NoteRow> NoteList;
+
     }
 }

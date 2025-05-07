@@ -106,6 +106,19 @@ namespace texts {
             }
         }
 
+        namespace Note {
+
+            namespace Note {
+                export const EntityId: string;
+                export const EntityType: string;
+                export const InsertDate: string;
+                export const InsertUserDisplayName: string;
+                export const InsertUserId: string;
+                export const NoteId: string;
+                export const Text: string;
+            }
+        }
+
         namespace Prescriptions {
 
             namespace PrescriptionDrugs {
@@ -204,6 +217,7 @@ namespace texts {
                 export const Email: string;
                 export const Gender: string;
                 export const Name: string;
+                export const NoteList: string;
                 export const PatientId: string;
                 export const Phone: string;
                 export const Surname: string;
@@ -313,6 +327,9 @@ const Texts: typeof texts = proxyTexts({}, '', {
         Examinations: {
             ExaminationDiagnoses: {},
             Examinations: {}
+        },
+        Note: {
+            Note: {}
         },
         Prescriptions: {
             PrescriptionDrugs: {},
