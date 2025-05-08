@@ -1,6 +1,6 @@
 namespace MuayeneYonetimPortali.Tanimlamalar;
 
-[EnumKey("Tanimlamalar.IsActive")]
+[EnumKey("Tanimlamalar.Enums.IsActive")]
 public enum IsActive
 {
     [Description("Pasif")]
@@ -8,5 +8,5 @@ public enum IsActive
     [Description("Aktif")]
     Aktif = 1,
     [Description("Silinmiş")]
-    Silinmis = 2
+    Silinmis = -1
 }

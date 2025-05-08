@@ -7,6 +7,7 @@ using System;
 using System.Data;
 using System.Globalization;
 using MyRow = MuayeneYonetimPortali.Tanimlamalar.PatientsRow;
+using System.Collections.Generic;
 
 namespace MuayeneYonetimPortali.Tanimlamalar.Endpoints;
 
@@ -59,4 +60,25 @@ public class PatientsEndpoint : ServiceEndpoint
         return ExcelContentResult.Create(bytes, "PatientsList_" +
             DateTime.Now.ToString("yyyyMMdd_HHmmss", CultureInfo.InvariantCulture) + ".xlsx");
     }
-}
+    // [HttpPost, AuthorizeUpdate(typeof(PatientsRow))]
+    // public SaveResponse SoftDeletePatients(IUnitOfWork uow, DeleteRequest request)
+    // {
+    //     var fld = PatientsRow.Fields;
+
+    //     foreach (var id in request.Ids)
+    //     {
+    //         new SqlUpdate(fld.TableName)
+    //             .Set(fld.IsActive, (short)IsActive.Silinmis)
+    //             .Where(fld.PatientId == id)
+    //             .Execute(uow.Connection, ExpectedRows.One);
+    //     }
+
+    //     return new SaveResponse();
+    // }
+    public class BulkDeleteRequest : ServiceRequest
+    {
+        public List<int> Ids { get; set; }
+    }
+
+
+    }

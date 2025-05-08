@@ -8,7 +8,7 @@ namespace MuayeneYonetimPortali.Tanimlamalar.Columns;
 [BasedOnRow(typeof(PatientsRow), CheckNames = true)]
 public class PatientsColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    [EditLink, DisplayName("Db.Shared.RecordId"), AlignCenter]
     public int PatientId { get; set; }
     public string Username { get; set; }
     [EditLink]
