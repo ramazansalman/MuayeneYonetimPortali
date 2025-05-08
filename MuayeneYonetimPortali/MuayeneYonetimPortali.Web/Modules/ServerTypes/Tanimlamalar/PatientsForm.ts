@@ -1,6 +1,7 @@
 ﻿import { LookupEditor, StringEditor, EnumEditor, DateEditor, PrefixedContext, initFormType } from "@serenity-is/corelib";
 import { NotesEditor } from "../../Note/Note/NotesEditor";
 import { Gender } from "./Gender";
+import { IsActive } from "./IsActive";
 
 export interface PatientsForm {
     UserId: LookupEditor;
@@ -12,6 +13,7 @@ export interface PatientsForm {
     Email: StringEditor;
     Tckn: StringEditor;
     NoteList: NotesEditor;
+    IsActive: EnumEditor;
 }
 
 export class PatientsForm extends PrefixedContext {
@@ -39,10 +41,11 @@ export class PatientsForm extends PrefixedContext {
                 'Phone', w1,
                 'Email', w1,
                 'Tckn', w1,
-                'NoteList', w4
+                'NoteList', w4,
+                'IsActive', w2
             ]);
         }
     }
 }
 
-[Gender]; // referenced types
+[Gender, IsActive]; // referenced types

@@ -50,6 +50,14 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
     [NotesEditor, NotMapped]
     public List<NoteRow> NoteList { get => fields.NoteList[this]; set => fields.NoteList[this] = value; }
 
+    // [DisplayName("Aktiflik Durumu"), NotNull, Column("IsActive")]
+    // public Int16? IsActive { get => Fields.IsActive[this]; set => Fields.IsActive[this] = value; }
+
+    // public Int16Field IsActiveField => Fields.IsActive;
+
+    [DisplayName("Aktif Mi?"), NotNull]
+    public IsActive? IsActive { get => fields.IsActive[this]; set => fields.IsActive[this] = value; }
+
     public class RowFields : RowFieldsBase
     {
         public Int32Field PatientId;
@@ -64,6 +72,8 @@ public sealed class PatientsRow : Row<PatientsRow.RowFields>, IIdRow, INameRow
 
         public StringField Username;
         public RowListField<NoteRow> NoteList;
+        //public Int16Field IsActive;
+        public EnumField<IsActive> IsActive;
 
     }
 }

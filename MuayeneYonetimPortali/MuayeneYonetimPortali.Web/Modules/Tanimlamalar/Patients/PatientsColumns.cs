@@ -19,4 +19,5 @@ public class PatientsColumns
     public string Phone { get; set; }
     public string Email { get; set; }
     public string Tckn { get; set; }
+    public IsActive IsActive {get; set; }
 }

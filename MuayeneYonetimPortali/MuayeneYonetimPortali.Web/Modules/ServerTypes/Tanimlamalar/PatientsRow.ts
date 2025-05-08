@@ -1,6 +1,7 @@
 ﻿import { fieldsProxy } from "@serenity-is/corelib";
 import { NoteRow } from "../Note/NoteRow";
 import { Gender } from "./Gender";
+import { IsActive } from "./IsActive";
 
 export interface PatientsRow {
     PatientId?: number;
@@ -14,6 +15,7 @@ export interface PatientsRow {
     Tckn?: string;
     Username?: string;
     NoteList?: NoteRow[];
+    IsActive?: IsActive;
 }
 
 export abstract class PatientsRow {

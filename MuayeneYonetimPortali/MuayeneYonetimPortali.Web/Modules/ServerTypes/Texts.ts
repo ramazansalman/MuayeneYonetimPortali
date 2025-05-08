@@ -216,6 +216,7 @@ namespace texts {
                 export const BirthDate: string;
                 export const Email: string;
                 export const Gender: string;
+                export const IsActive: string;
                 export const Name: string;
                 export const NoteList: string;
                 export const PatientId: string;

@@ -1,6 +1,6 @@
 namespace MuayeneYonetimPortali.Tanimlamalar;
 
-[EnumKey("Tanimlamalar.Doctors.Gender")]
+[EnumKey("Tanimlamalar.Gender")]
 public enum Gender
 {
     [Description("Erkek")]

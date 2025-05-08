@@ -13,6 +13,7 @@ export interface PatientsColumns {
     Phone: Column<PatientsRow>;
     Email: Column<PatientsRow>;
     Tckn: Column<PatientsRow>;
+    IsActive: Column<PatientsRow>;
 }
 
 export class PatientsColumns extends ColumnsBase<PatientsRow> {

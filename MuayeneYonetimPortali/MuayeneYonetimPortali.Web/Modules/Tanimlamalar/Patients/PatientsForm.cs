@@ -16,5 +16,6 @@ public class PatientsForm
     public string Email { get; set; }
     public string Tckn { get; set; }
     public List<object> NoteList { get; set; }
+    public IsActive IsActive { get; set; }
 
 }
