@@ -4,7 +4,7 @@
     "@serenity-is/corelib": "./node_modules/.dotnet/serenity.corelib",
     "@serenity-is/extensions": "./node_modules/.dotnet/serenity.extensions",
     "@serenity-is/sleekgrid": "./node_modules/.dotnet/serenity.sleekgrid",
-    "dompurify": "^3.2.5",
+    "dompurify": "^3.2.6",
     "jsdom": "^26.1.0",
     "jsx-dom": "8.1.5",
     "preact": "10.24.3"
