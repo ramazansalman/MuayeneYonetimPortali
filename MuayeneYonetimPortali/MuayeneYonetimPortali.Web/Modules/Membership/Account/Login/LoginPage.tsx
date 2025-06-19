@@ -32,22 +32,26 @@ class LoginPanel extends PropertyPanel<LoginRequest, any> {
             url: resolveUrl('~/Account/Login'),
             request: request,
             onSuccess: () => {
-                this.redirectToReturnUrl();
+                const q = parseQueryString();
+                const returnUrl = q['returnUrl'];
+                if (returnUrl && /^\/(?!\/|\\)/.test(returnUrl)) {
+                    window.location.href = returnUrl;
+                } else {
+                    window.location.href = resolveUrl("~/");
+                }
             },
             onError: response => {
-
-                if (response?.Error?.Code === "RedirectUserTo") {
-                    window.location.href = response.Error.Arguments;
+                // Handle 2FA redirect FIRST!
+                if (response?.Error?.Code === "RedirectUserTo" && response.Error.Message) {
+                    window.location.href = response.Error.Message;
                     return;
                 }
-
+                // Only show error if not a redirect
                 if (response?.Error?.Message?.length) {
                     notifyError(response.Error.Message);
                     this.form.Password.element.getNode().focus();
-
                     return;
                 }
-
                 ErrorHandling.showServiceError(response.Error);
             }
         });
@@ -61,13 +65,15 @@ class LoginPanel extends PropertyPanel<LoginRequest, any> {
 
     protected redirectToReturnUrl() {
         var returnUrl = this.getReturnUrl();
-        if (returnUrl && /^\//.test(returnUrl)) {
+
+        // Only allow local URLs (starting with a single slash, not // or /\\)
+        if (returnUrl && /^\/(?!\/|\\)/.test(returnUrl)) {
             var hash = window.location.hash;
-            if (hash != null && hash != '#')
+            if (hash && hash !== '#')
                 returnUrl += hash;
             window.location.href = returnUrl;
-        }
-        else {
+        } else {
+            // Default to home page if returnUrl is not safe
             window.location.href = resolveUrl('~/');
         }
     }

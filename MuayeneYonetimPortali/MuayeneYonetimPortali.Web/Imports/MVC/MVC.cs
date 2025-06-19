@@ -33,6 +33,11 @@ public static partial class MVC
                     public const string ActivateEmail = "~/Modules/Membership/Account/SignUp/ActivateEmail.cshtml";
                     public const string SignUpPage = "~/Modules/Membership/Account/SignUp/SignUpPage.cshtml";
                 }
+
+                public static partial class TwoFactorVerify
+                {
+                    public const string TwoFactorVerifyPage = "~/Modules/Membership/Account/TwoFactorVerify/TwoFactorVerifyPage.cshtml";
+                }
             }
         }
 

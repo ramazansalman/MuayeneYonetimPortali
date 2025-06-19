@@ -9,6 +9,9 @@ export interface UserColumns {
     Email: Column<UserRow>;
     Source: Column<UserRow>;
     Roles: Column<UserRow>;
+    PhoneNumber: Column<UserRow>;
+    TwoFactorMethod: Column<UserRow>;
+    TwoFactorEnabled: Column<UserRow>;
 }
 
 export class UserColumns extends ColumnsBase<UserRow> {

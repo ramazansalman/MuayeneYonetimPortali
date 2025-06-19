@@ -48,6 +48,19 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
     [AsyncLookupEditor(typeof(RoleRow), Multiple = true)]
     public List<int> Roles { get => fields.Roles[this]; set => fields.Roles[this] = value; }
 
+    // [Size(100)]
+    // public String TwoFactorSecretKey { get => Fields.TwoFactorSecretKey[this]; set => Fields.TwoFactorSecretKey[this] = value; }
+
+    [DisplayName("Two Factor Enabled")]
+    public Boolean? TwoFactorEnabled { get => fields.TwoFactorEnabled[this]; set => fields.TwoFactorEnabled[this] = value; }
+
+    [DisplayName("Two Factor Method"), Size(100)]
+    [QuickSearch]
+    public string TwoFactorMethod { get => fields.TwoFactorMethod[this]; set => fields.TwoFactorMethod[this] = value; }
+
+    [DisplayName("Phone Number"), Size(100)]
+    public string PhoneNumber { get => fields.PhoneNumber[this]; set => fields.PhoneNumber[this] = value; }
+
     StringField IDisplayNameRow.DisplayNameField => fields.DisplayName;
     StringField IEmailRow.EmailField => fields.Email;
     Int16Field IIsActiveRow.IsActiveField => fields.IsActive;
@@ -71,5 +84,9 @@ public sealed class UserRow : Serenity.Extensions.Entities.LoggingRow<UserRow.Ro
         public StringField PasswordConfirm;
 
         public ListField<int> Roles;
+        public BooleanField TwoFactorEnabled;
+        // public StringField TwoFactorSecretKey;
+        public StringField TwoFactorMethod;
+        public StringField PhoneNumber;
     }
 }

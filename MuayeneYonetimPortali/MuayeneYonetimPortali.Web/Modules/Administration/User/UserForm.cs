@@ -18,5 +18,9 @@ public class UserForm
     public string PasswordConfirm { get; set; }
     [OneWay]
     public string Source { get; set; }
-    public bool IsActive { get; set;  }
+    public bool IsActive { get; set; }
+    public string PhoneNumber { get; set; }
+    public string TwoFactorMethod { get; set; }
+    public Boolean TwoFactorEnabled { get; set; }
+
 }

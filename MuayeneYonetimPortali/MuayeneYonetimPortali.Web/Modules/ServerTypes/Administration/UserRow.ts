@@ -14,6 +14,9 @@ export interface UserRow {
     Password?: string;
     PasswordConfirm?: string;
     Roles?: number[];
+    TwoFactorEnabled?: boolean;
+    TwoFactorMethod?: string;
+    PhoneNumber?: string;
     InsertUserId?: number;
     InsertDate?: string;
     UpdateUserId?: number;

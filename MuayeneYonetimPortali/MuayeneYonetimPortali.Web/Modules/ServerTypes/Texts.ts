@@ -23,6 +23,14 @@ namespace texts {
                 export const RolePermissionId: string;
             }
 
+            namespace TwoFactorCode {
+                export const Code: string;
+                export const ExpireTime: string;
+                export const Id: string;
+                export const UserId: string;
+                export const Username: string;
+            }
+
             namespace User {
                 export const DisplayName: string;
                 export const Email: string;
@@ -34,8 +42,11 @@ namespace texts {
                 export const PasswordConfirm: string;
                 export const PasswordHash: string;
                 export const PasswordSalt: string;
+                export const PhoneNumber: string;
                 export const Roles: string;
                 export const Source: string;
+                export const TwoFactorEnabled: string;
+                export const TwoFactorMethod: string;
                 export const UpdateDate: string;
                 export const UpdateUserId: string;
                 export const UserId: string;
@@ -318,6 +329,7 @@ const Texts: typeof texts = proxyTexts({}, '', {
             Language: {},
             Role: {},
             RolePermission: {},
+            TwoFactorCode: {},
             User: {},
             UserPermission: {},
             UserRole: {}

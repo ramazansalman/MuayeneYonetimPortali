@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MuayeneYonetimPortali.Modules.Administration.TwoFactorCode;
 using Serenity.Extensions.DependencyInjection;
 using Serenity.Localization;
 using Serenity.Navigation;
@@ -108,6 +109,7 @@ public partial class Startup
         services.AddScriptBundling();
         services.AddUploadStorage();
         services.AddReporting();
+        services.AddTransient<TwoFactorService>();
     }
 
     public static void InitializeLocalTexts(IServiceProvider services)

@@ -2,6 +2,11 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using MuayeneYonetimPortali.Administration;
+using MuayeneYonetimPortali.Modules.Administration.TwoFactorCode;
+using MuayeneYonetimPortali.Membership;
+using Serenity.Data;
+using MuayeneYonetimPortali.Modules.Membership.Account.TwoFactorVerify;
 
 namespace MuayeneYonetimPortali.Membership.Pages;
 
@@ -39,10 +44,11 @@ public partial class AccountPage : Controller
     [HttpPost, JsonRequest]
     public Result<ServiceResponse> Login(LoginRequest request,
         [FromServices] IUserPasswordValidator passwordValidator,
-        [FromServices] IUserClaimCreator userClaimCreator)
+        [FromServices] IUserClaimCreator userClaimCreator,
+        [FromServices] ISqlConnections sqlConnections)
     {
 
-        return this.ExecuteMethod(() =>
+        return this.ExecuteMethod<ServiceResponse>(() =>
         {
             if (request is null)
                 throw new ArgumentNullException(nameof(request));
@@ -60,9 +66,28 @@ public partial class AccountPage : Controller
             var result = passwordValidator.Validate(ref username, request.Password);
             if (result == PasswordValidationResult.Valid)
             {
-                var principal = userClaimCreator.CreatePrincipal(username, authType: "Password");
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).GetAwaiter().GetResult();
-                return new ServiceResponse();
+                // Fetch user by username
+                UserRow user;
+                using (var connection = sqlConnections.NewFor<UserRow>())
+                {
+                    user = connection.TryFirst<UserRow>(UserRow.Fields.Username == username);
+                }
+                if (user == null)
+                    throw new ValidationError("AuthenticationError", MembershipValidationTexts.AuthenticationError.ToString(Localizer));
+
+                var twoFactorService = HttpContext.RequestServices.GetRequiredService<TwoFactorService>();
+                twoFactorService.SendCode(user.UserId.Value, user.Email, "email");
+
+                // Return a special error code to the client to redirect to 2FA page
+                var returnUrl = Request.Query["returnUrl"].ToString();
+                if (!string.IsNullOrEmpty(returnUrl) && !returnUrl.StartsWith("/") || returnUrl.StartsWith("//") || returnUrl.StartsWith(@"\"))
+                    returnUrl = ""; // sanitize
+                
+                throw new ValidationError(
+                    "RedirectUserTo", // error code
+                    null,             // localizer/message (can be null)
+                    "/Account/TwoFactorVerify?userId=" + user.UserId + (string.IsNullOrEmpty(returnUrl) ? "" : "&returnUrl=" + Uri.EscapeDataString(returnUrl))
+                );
             }
 
             if (result == PasswordValidationResult.InactiveUser)
@@ -89,5 +114,44 @@ public partial class AccountPage : Controller
         HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         HttpContext.RequestServices.GetService<IElevationHandler>()?.DeleteToken();
         return new RedirectResult("~/");
+    }
+
+    [HttpGet]
+    public ActionResult TwoFactorVerify(int userId)
+    {
+        ViewData["UserId"] = userId;
+        ViewData["HideLeftNavigation"] = true;
+        return View("~/Modules/Membership/Account/TwoFactorVerify/TwoFactorVerifyPage.cshtml");
+        }
+
+    [HttpPost, JsonRequest]
+    public Result<ServiceResponse> TwoFactorVerify(
+        TwoFactorVerifyRequest request,
+        [FromServices] TwoFactorService twoFactorService,
+        [FromServices] IUserClaimCreator userClaimCreator,
+        [FromServices] ISqlConnections sqlConnections)
+    {
+        return this.ExecuteMethod<ServiceResponse>(() =>
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (twoFactorService.VerifyCode(request.UserId, request.Code))
+            {
+                // Fetch user by userId
+                UserRow user;
+                using (var connection = sqlConnections.NewFor<UserRow>())
+                {
+                    user = connection.TryFirst<UserRow>(UserRow.Fields.UserId == request.UserId);
+                }
+                if (user == null)
+                    throw new ValidationError("AuthenticationError", "User not found.");
+
+                var principal = userClaimCreator.CreatePrincipal(user.Username, authType: "Password");
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal).GetAwaiter().GetResult();
+                return new ServiceResponse();
+            }
+            throw new ValidationError("Invalid2FACode", "Invalid or expired 2FA code.");
+        });
     }
 }

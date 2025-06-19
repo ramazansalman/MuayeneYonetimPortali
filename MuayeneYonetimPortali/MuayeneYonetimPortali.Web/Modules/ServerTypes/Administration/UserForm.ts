@@ -10,6 +10,9 @@ export interface UserForm {
     PasswordConfirm: PasswordEditor;
     Source: StringEditor;
     IsActive: BooleanEditor;
+    PhoneNumber: StringEditor;
+    TwoFactorMethod: StringEditor;
+    TwoFactorEnabled: BooleanEditor;
 }
 
 export class UserForm extends PrefixedContext {
@@ -38,7 +41,10 @@ export class UserForm extends PrefixedContext {
                 'Password', w4,
                 'PasswordConfirm', w4,
                 'Source', w0,
-                'IsActive', w5
+                'IsActive', w5,
+                'PhoneNumber', w0,
+                'TwoFactorMethod', w0,
+                'TwoFactorEnabled', w5
             ]);
         }
     }

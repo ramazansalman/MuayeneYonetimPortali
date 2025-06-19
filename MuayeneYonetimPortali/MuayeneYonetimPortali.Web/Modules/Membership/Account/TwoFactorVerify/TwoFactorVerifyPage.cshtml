@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Two-Factor Verification";
+    Layout = MVC.Views.Shared._LayoutNoNavigation;
+    var userId = ViewData["UserId"];
+}
+
+<div class="s-full-page justify-content-center">
+    <div id="TwoFactorPanel" class="s-container-tight"></div>
+</div>
+
+@Html.ModulePageInit(ESM.TwoFactorVerifyPage, new { userId = userId })

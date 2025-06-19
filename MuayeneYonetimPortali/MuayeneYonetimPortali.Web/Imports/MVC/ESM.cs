@@ -19,6 +19,8 @@ public static partial class ESM
     public const string ScriptInit = "~/esm/Modules/Common/ScriptInit.js";
     public const string SignUpPage = "~/esm/Modules/Membership/Account/SignUp/SignUpPage.js";
     public const string TranslationPage = "~/esm/Modules/Administration/Translation/TranslationPage.js";
+    public const string TwoFactorCodePage = "~/esm/Modules/Administration/TwoFactorCode/TwoFactorCodePage.js";
+    public const string TwoFactorVerifyPage = "~/esm/Modules/Membership/Account/TwoFactorVerify/TwoFactorVerifyPage.js";
     public const string UserPage = "~/esm/Modules/Administration/User/UserPage.js";
 
     public static partial class Modules
@@ -38,6 +40,11 @@ public static partial class ESM
             public static partial class Translation
             {
                 public const string TranslationPage = "~/esm/Modules/Administration/Translation/TranslationPage.js";
+            }
+
+            public static partial class TwoFactorCode
+            {
+                public const string TwoFactorCodePage = "~/esm/Modules/Administration/TwoFactorCode/TwoFactorCodePage.js";
             }
 
             public static partial class User
@@ -79,6 +86,11 @@ public static partial class ESM
                 public static partial class SignUp
                 {
                     public const string SignUpPage = "~/esm/Modules/Membership/Account/SignUp/SignUpPage.js";
+                }
+
+                public static partial class TwoFactorVerify
+                {
+                    public const string TwoFactorVerifyPage = "~/esm/Modules/Membership/Account/TwoFactorVerify/TwoFactorVerifyPage.js";
                 }
             }
         }
